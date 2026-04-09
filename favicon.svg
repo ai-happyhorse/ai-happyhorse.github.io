@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+  <title>Happy Horse AI</title>
+  <defs>
+    <linearGradient id="g" x1="12" y1="10" x2="118" y2="116" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#86f0d6"/>
+      <stop offset="1" stop-color="#56d1fa"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="32" fill="#081423"/>
+  <rect x="12" y="12" width="104" height="104" rx="28" fill="url(#g)"/>
+  <path d="M41 33h16l5 15 15-15h18L77 56l20 39H79L66 69 57 79V95H41V33z" fill="#05111d"/>
+</svg>
