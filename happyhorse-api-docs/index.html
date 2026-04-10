@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HappyHorse API Docs: Video Generation API &amp; Developer Guide</title>
+    <meta name="description" content="Explore HappyHorse API docs with authentication, video generation endpoints, request examples, status checks, and developer integration notes.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ai-happyhorse.github.io/happyhorse-api-docs/">
+    <link rel="icon" href="/Favicon.png" type="image/png">
+    <link rel="stylesheet" href="../style.css">
+    <!-- Privacy-friendly analytics by Plausible -->
+    <script async src="https://plausible.io/js/pa-LbYKk9nEzA2_F65ajsgRo.js"></script>
+    <script>
+      window.plausible = window.plausible || function(){(plausible.q = plausible.q || []).push(arguments)};
+      plausible.init = plausible.init || function(i){plausible.o = i || {}};
+      plausible.init();
+    </script>
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="HappyHorse API Docs: Video Generation API &amp; Developer Guide">
+    <meta property="og:description" content="Explore HappyHorse API docs with authentication, video generation endpoints, request examples, status checks, and developer integration notes.">
+    <meta property="og:url" content="https://ai-happyhorse.github.io/happyhorse-api-docs/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="HappyHorse API Docs: Video Generation API &amp; Developer Guide">
+    <meta name="twitter:description" content="Explore HappyHorse API docs with authentication, video generation endpoints, request examples, status checks, and developer integration notes.">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "HappyHorse API Docs: Video Generation API & Developer Guide",
+        "url": "https://ai-happyhorse.github.io/happyhorse-api-docs/",
+        "description": "Developer-style HappyHorse API docs page covering authentication, video generation endpoints, request examples, status checks, and integration notes."
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://ai-happyhorse.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "HappyHorse API Docs",
+            "item": "https://ai-happyhorse.github.io/happyhorse-api-docs/"
+          }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is the HappyHorse API used for?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The HappyHorse API is used to integrate async video generation workflows into an application, including prompt-based text-to-video requests, image-to-video extensions, task tracking, and result retrieval."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does the API support text to video?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. The documentation-style workflow on this page centers on text-to-video requests where a prompt, model, duration, aspect ratio, and quality mode are submitted to create a generation task."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I use images as input?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The page is framed to cover image-to-video as an extension path, where an image reference can be included alongside prompt and generation settings when that workflow is available in the integration channel you use."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I check generation status?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "After sending a create request, store the returned task ID and call the status endpoint to check whether the job is queued, processing, completed, or failed."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What authentication method is used?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "This page uses a bearer-token pattern in the Authorization header. It shows the request format without claiming a public self-serve credential flow on this site."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does the API return a task ID?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. The async workflow shown here returns a task ID after the generation request is accepted so the client can poll for status and fetch the result later."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What should I do if a request fails?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Start by checking the HTTP status code, request body fields, and token formatting, then retry only when the error is transient such as rate limiting or a temporary server issue."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+    <header class="site-header">
+      <div class="container">
+        <a class="brand" href="../">
+          <span class="brand-mark"><img src="/Favicon.png" alt="Happy Horse AI logo" width="42" height="42"></span>
+          <span>Happy Horse AI</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>Menu</button>
+        <nav class="main-nav" id="site-nav" data-nav>
+          <a href="../">Home</a>
+          <a href="../happyhorse-1-0/">HappyHorse 1.0</a>
+          <a href="../happy-horse-ai/">HappyHorse AI</a>
+          <a href="../happyhorse-github/">GitHub</a>
+          <a href="../happyhorse-official-site/">Official Site</a>
+          <a href="../happyhorse-vs-seedance/">Comparison</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="content">
+      <div class="container breadcrumbs">
+        <ol>
+          <li><a href="../">Home</a></li>
+          <li>HappyHorse API Docs</li>
+        </ol>
+      </div>
+
+      <section class="page-header">
+        <div class="container docs-hero">
+          <span class="eyebrow">Developer docs · API guide · integration overview</span>
+          <h1 class="page-title">HappyHorse API Docs: Video Generation API &amp; Developer Guide</h1>
+          <p class="lead">
+            This page introduces the HappyHorse API from a developer perspective, including authentication, video generation workflow, request structure, status checks, and practical integration notes for text-to-video and image-to-video use cases.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#api-endpoints">View Endpoints</a>
+            <a class="button button-secondary" href="#request-example">See Request Example</a>
+          </div>
+          <div class="signal-strip docs-related-links">
+            <strong>Related links</strong>
+            <a class="chip" href="../happyhorse-1-0/">HappyHorse 1.0</a>
+            <a class="chip" href="../happyhorse-github/">HappyHorse GitHub</a>
+            <a class="chip" href="../happyhorse-vs-seedance/">HappyHorse vs Seedance 2.0</a>
+            <a class="chip" href="../happy-horse-ai/">Happy Horse AI</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-block">
+        <div class="container content-layout">
+          <div class="content-main">
+            <div class="signal-strip">
+              <strong>Developer view</strong>
+              <span class="chip">Async task workflow</span>
+              <span class="chip">Text-to-video</span>
+              <span class="chip">Image-to-video</span>
+              <span class="chip">Status polling</span>
+            </div>
+
+            <article class="section-shell" id="api-overview">
+              <h2>API Overview</h2>
+              <p>
+                The HappyHorse API is best understood as a task-based video generation interface. Instead of returning a finished clip immediately, the API accepts a generation request, returns a task identifier, and expects the client to check a status endpoint until the output is ready.
+              </p>
+              <p>
+                That workflow fits developer integrations where video generation happens behind a product UI, inside an automation pipeline, or as part of a prompt-driven creative tool. The primary request patterns center on text-to-video generation, image-to-video extensions, and predictable status tracking for downstream delivery.
+              </p>
+              <div class="docs-mini-grid">
+                <div class="docs-mini-card">
+                  <strong>HappyHorse API</strong>
+                  <p>A developer-facing overview page for authentication, endpoints, payload design, and polling flow.</p>
+                </div>
+                <div class="docs-mini-card">
+                  <strong>Text-to-video</strong>
+                  <p>Prompt-based clip creation for apps that need short-form video generation from structured text input.</p>
+                </div>
+                <div class="docs-mini-card">
+                  <strong>Image-to-video</strong>
+                  <p>An extension path where an existing image reference can be used as the visual starting point for motion.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="section-shell" id="auth">
+              <h2>Base URL &amp; Authentication</h2>
+              <div class="docs-grid">
+                <div class="docs-card">
+                  <span class="docs-label">Base URL</span>
+                  <p><code>https://api.happyhorse.ai</code></p>
+                  <p>This hostname is shown in documentation format as a stable integration placeholder. Production hostnames and version paths can vary by release channel or account provisioning path.</p>
+                </div>
+                <div class="docs-card">
+                  <span class="docs-label">Authentication</span>
+                  <p><code>Authorization: Bearer YOUR_API_KEY</code></p>
+                  <p>Send your API key in the request headers as a bearer token. This page demonstrates the header format without claiming a self-serve credential issuance flow on this site.</p>
+                </div>
+              </div>
+              <div class="docs-note" style="margin-top: 16px;">
+                <p>Header example</p>
+                <pre class="code-block"><code>Authorization: Bearer YOUR_API_KEY
+Content-Type: application/json</code></pre>
+              </div>
+            </article>
+
+            <article class="section-shell" id="capability">
+              <h2>Available Model / API Capability</h2>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Capability</th>
+                      <th>Typical API Value</th>
+                      <th>Integration Note</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Model</td>
+                      <td><span class="inline-code">happyhorse-1.0/video</span></td>
+                      <td>Use a model identifier explicitly in the request body so client behavior stays predictable across releases.</td>
+                    </tr>
+                    <tr>
+                      <td>Generation mode</td>
+                      <td><span class="inline-code">text-to-video</span> or <span class="inline-code">image-to-video</span></td>
+                      <td>Start with text prompts for direct generation, or attach an image reference when the workflow calls for motion from an existing visual.</td>
+                    </tr>
+                    <tr>
+                      <td>Aspect ratio</td>
+                      <td><span class="inline-code">16:9</span>, <span class="inline-code">9:16</span>, <span class="inline-code">1:1</span></td>
+                      <td>Aspect ratio should be set intentionally because it affects framing, motion composition, and product UI layout.</td>
+                    </tr>
+                    <tr>
+                      <td>Duration</td>
+                      <td><span class="inline-code">5</span> or <span class="inline-code">10</span> seconds</td>
+                      <td>Shorter durations are easier to validate in early integrations and are common in task-based generation APIs.</td>
+                    </tr>
+                    <tr>
+                      <td>Quality mode</td>
+                      <td><span class="inline-code">std</span> or <span class="inline-code">pro</span></td>
+                      <td>Expose quality as an explicit setting so users can trade off speed, credits, and output polish.</td>
+                    </tr>
+                    <tr>
+                      <td>Prompt-based generation</td>
+                      <td>Natural-language prompt plus optional sound flag</td>
+                      <td>Prompt structure usually performs better when scene, camera motion, subject action, and mood are described directly.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="section-shell" id="api-endpoints">
+              <h2>API Endpoints</h2>
+              <div class="endpoint-grid">
+                <div class="endpoint-card">
+                  <span class="endpoint-method">POST</span>
+                  <div class="endpoint-path">/api/generate</div>
+                  <p>Create a video generation task. This is the main write endpoint for prompt-driven video requests and can be extended to image-to-video when an image input field is supported in the request payload.</p>
+                  <ul class="endpoint-list">
+                    <li>Use for text generation requests and task creation.</li>
+                    <li>Common fields include <span class="inline-code">model</span>, <span class="inline-code">prompt</span>, <span class="inline-code">mode</span>, <span class="inline-code">duration</span>, <span class="inline-code">aspect_ratio</span>, and <span class="inline-code">sound</span>.</li>
+                    <li>Successful acceptance returns a <span class="inline-code">task_id</span> and an initial processing state.</li>
+                  </ul>
+                </div>
+                <div class="endpoint-card">
+                  <span class="endpoint-method get">GET</span>
+                  <div class="endpoint-path">/api/status</div>
+                  <p>Query the state of a previously created task. The client sends a task identifier and receives processing updates plus result URL information when the clip is ready.</p>
+                  <ul class="endpoint-list">
+                    <li>Use <span class="inline-code">task_id</span> to fetch queued, processing, completed, or failed states.</li>
+                    <li>Completed responses typically expose <span class="inline-code">resultUrls</span> or a direct <span class="inline-code">video_url</span> field.</li>
+                    <li>Polling should be rate-aware to avoid unnecessary 429 responses.</li>
+                  </ul>
+                </div>
+              </div>
+            </article>
+
+            <article class="section-shell" id="request-example">
+              <h2>Request Example</h2>
+              <p>
+                The examples below show a straightforward text-to-video request. For an image-to-video flow, keep the same async pattern and extend the payload with the image input field used by your integration channel.
+              </p>
+              <div class="code-grid">
+                <div>
+                  <span class="code-caption">cURL</span>
+                  <pre class="code-block"><code>curl -X POST "https://api.happyhorse.ai/api/generate" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "happyhorse-1.0/video",
+    "prompt": "A silver horse runs through a rain-soaked neon alley, cinematic camera move, detailed reflections, high motion clarity.",
+    "mode": "text-to-video",
+    "duration": 5,
+    "aspect_ratio": "16:9",
+    "quality": "pro",
+    "sound": true
+  }'</code></pre>
+                </div>
+                <div>
+                  <span class="code-caption">JavaScript fetch</span>
+                  <pre class="code-block"><code>const response = await fetch("https://api.happyhorse.ai/api/generate", {
+  method: "POST",
+  headers: {
+    "Authorization": "Bearer YOUR_API_KEY",
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    model: "happyhorse-1.0/video",
+    prompt: "A silver horse runs through a rain-soaked neon alley, cinematic camera move, detailed reflections, high motion clarity.",
+    mode: "text-to-video",
+    duration: 5,
+    aspect_ratio: "16:9",
+    quality: "pro",
+    sound: true
+  })
+});
+
+const payload = await response.json();</code></pre>
+                </div>
+              </div>
+            </article>
+
+            <article class="section-shell" id="response-example">
+              <h2>Response Example</h2>
+              <p>A status response usually contains the task identifier, current state, a readable message, and the result location once processing is complete.</p>
+              <pre class="code-block"><code>{
+  "task_id": "hh_task_93d2a7c4f81d",
+  "status": "completed",
+  "message": "Video generation completed.",
+  "data": {
+    "model": "happyhorse-1.0/video",
+    "mode": "text-to-video",
+    "duration": 5,
+    "aspect_ratio": "16:9",
+    "resultUrls": [
+      "https://cdn.example.com/happyhorse/hh_task_93d2a7c4f81d.mp4"
+    ],
+    "video_url": "https://cdn.example.com/happyhorse/hh_task_93d2a7c4f81d.mp4"
+  }
+}</code></pre>
+            </article>
+
+            <article class="section-shell" id="error-codes">
+              <h2>Error Codes</h2>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Status</th>
+                      <th>Name</th>
+                      <th>Meaning</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>400</td>
+                      <td>Invalid request</td>
+                      <td>The payload is missing required fields or contains invalid values such as an unsupported mode, duration, or aspect ratio.</td>
+                    </tr>
+                    <tr>
+                      <td>401</td>
+                      <td>Invalid API key</td>
+                      <td>The bearer token is missing, malformed, expired, or not recognized for the current request.</td>
+                    </tr>
+                    <tr>
+                      <td>402</td>
+                      <td>Insufficient credits</td>
+                      <td>The request was understood but cannot be processed because the account or integration channel lacks available credits.</td>
+                    </tr>
+                    <tr>
+                      <td>429</td>
+                      <td>Rate limited</td>
+                      <td>The client is sending too many requests in a short window and should back off before retrying.</td>
+                    </tr>
+                    <tr>
+                      <td>500</td>
+                      <td>Internal error</td>
+                      <td>The server could not finish the request because of an internal processing issue. Retry only after a short delay.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="section-shell" id="workflow">
+              <h2>API Workflow</h2>
+              <div class="workflow-grid">
+                <div class="workflow-step">
+                  <span>1</span>
+                  <h3>Authenticate</h3>
+                  <p>Attach a bearer token in the <span class="inline-code">Authorization</span> header for every request.</p>
+                </div>
+                <div class="workflow-step">
+                  <span>2</span>
+                  <h3>Send generation request</h3>
+                  <p>POST the model, prompt, mode, duration, aspect ratio, and optional generation flags to <span class="inline-code">/api/generate</span>.</p>
+                </div>
+                <div class="workflow-step">
+                  <span>3</span>
+                  <h3>Receive task ID</h3>
+                  <p>Store the returned task identifier so the client can track the job asynchronously.</p>
+                </div>
+                <div class="workflow-step">
+                  <span>4</span>
+                  <h3>Poll status endpoint</h3>
+                  <p>Call <span class="inline-code">/api/status</span> with the task ID until the request is completed or fails.</p>
+                </div>
+                <div class="workflow-step">
+                  <span>5</span>
+                  <h3>Fetch result</h3>
+                  <p>Read the completed response payload and use the returned result URL to deliver or store the video output.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="section-shell" id="faq">
+              <h2>HappyHorse API FAQ</h2>
+              <div class="faq-shell">
+                <details class="faq-item" open>
+                  <summary>What is the HappyHorse API used for?</summary>
+                  <p>The HappyHorse API is used for async video generation workflows, including prompt submission, task tracking, and result retrieval in a developer integration.</p>
+                </details>
+                <details class="faq-item">
+                  <summary>Does the API support text to video?</summary>
+                  <p>Yes. The main request pattern shown here is a text-to-video generation task built from model, prompt, duration, aspect ratio, and quality settings.</p>
+                </details>
+                <details class="faq-item">
+                  <summary>Can I use images as input?</summary>
+                  <p>Image-to-video is treated as an extension path for integrations that accept an image reference alongside the usual generation parameters.</p>
+                </details>
+                <details class="faq-item">
+                  <summary>How do I check generation status?</summary>
+                  <p>Store the returned task ID from the create request, then call the status endpoint until the job reports a completed or failed state.</p>
+                </details>
+                <details class="faq-item">
+                  <summary>What authentication method is used?</summary>
+                  <p>This page uses a bearer-token pattern in the request header. It is documentation-style guidance, not a claim that this site issues production credentials.</p>
+                </details>
+                <details class="faq-item">
+                  <summary>Does the API return a task ID?</summary>
+                  <p>Yes. A task ID is central to the async workflow because it lets the client poll status and fetch result URLs after processing.</p>
+                </details>
+                <details class="faq-item">
+                  <summary>What should I do if a request fails?</summary>
+                  <p>Check the status code first, validate request fields and token formatting, then retry only when the error is transient such as rate limiting or a temporary server issue.</p>
+                </details>
+              </div>
+            </article>
+
+            <article class="section-shell">
+              <h2>Related HappyHorse Pages</h2>
+              <div class="related-grid">
+                <a class="related-card" href="../happyhorse-1-0/">
+                  <strong>HappyHorse 1.0</strong>
+                  <p>Model framing, release context, and creator-facing capability notes.</p>
+                </a>
+                <a class="related-card" href="../happyhorse-github/">
+                  <strong>HappyHorse GitHub</strong>
+                  <p>Repository intent, technical breadcrumbs, and public code-related search behavior.</p>
+                </a>
+                <a class="related-card" href="../happyhorse-vs-seedance/">
+                  <strong>HappyHorse vs Seedance 2.0</strong>
+                  <p>Comparison context for motion quality, prompt control, and workflow fit.</p>
+                </a>
+                <a class="related-card" href="../happy-horse-ai/">
+                  <strong>Happy Horse AI</strong>
+                  <p>The broader entry page for access, prompts, and topic-level search intent.</p>
+                </a>
+              </div>
+            </article>
+          </div>
+
+          <aside class="content-sidebar">
+            <div class="sidebar-panel">
+              <h3>On this page</h3>
+              <ul class="sidebar-links">
+                <li><a href="#api-overview">API Overview</a></li>
+                <li><a href="#auth">Base URL &amp; Authentication</a></li>
+                <li><a href="#capability">Model &amp; Capability</a></li>
+                <li><a href="#api-endpoints">Endpoints</a></li>
+                <li><a href="#request-example">Request Example</a></li>
+                <li><a href="#error-codes">Error Codes</a></li>
+                <li><a href="#workflow">API Workflow</a></li>
+              </ul>
+            </div>
+            <div class="sidebar-panel">
+              <h3>Integration notes</h3>
+              <p>This page is written as a credible API docs-style guide. It shows request structure, auth format, and workflow shape without claiming a fully self-serve developer platform on this site.</p>
+            </div>
+            <div class="sidebar-panel">
+              <h3>API snapshot</h3>
+              <div class="docs-stat-grid">
+                <div class="docs-stat">
+                  <strong>Model</strong>
+                  <p><span class="inline-code">happyhorse-1.0/video</span></p>
+                </div>
+                <div class="docs-stat">
+                  <strong>Auth</strong>
+                  <p>Bearer token header</p>
+                </div>
+                <div class="docs-stat">
+                  <strong>Flow</strong>
+                  <p>Async task + polling</p>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="start-exploring">
+        <div class="container">
+          <div class="cta-panel">
+            <div>
+              <h2>Start with HappyHorse API</h2>
+              <p>
+                Use this docs page as a developer guide, then continue to the model page, GitHub intent page, comparison page, and broader Happy Horse AI overview for related research.
+              </p>
+            </div>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#request-example">See API Request</a>
+              <a class="button button-secondary" href="../happyhorse-1-0/">Open HappyHorse 1.0</a>
+            </div>
+          </div>
+          <div class="related-grid" style="margin-top: 18px;">
+            <a class="related-card" href="../happyhorse-1-0/">HappyHorse 1.0</a>
+            <a class="related-card" href="../happyhorse-github/">HappyHorse GitHub</a>
+            <a class="related-card" href="../happyhorse-vs-seedance/">HappyHorse vs Seedance 2.0</a>
+            <a class="related-card" href="../happy-horse-ai/">Happy Horse AI</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-top">
+          <div class="footer-copy">
+            <a class="brand" href="../">
+              <span class="brand-mark"><img src="/Favicon.png" alt="Happy Horse AI logo" width="42" height="42"></span>
+              <span>Happy Horse AI</span>
+            </a>
+            <p>Independent HappyHorse API docs-style guide for developer intent, integration research, and product-completeness trust signals.</p>
+          </div>
+          <div class="footer-links">
+            <a href="../">Home</a>
+            <a href="../happy-horse-ai/">All Guides</a>
+            <a href="../#searches">Popular HappyHorse Searches</a>
+            <a href="#faq">FAQ</a>
+            <a href="../sitemap.xml">Sitemap</a>
+          </div>
+        </div>
+        <p class="footer-meta">© <span data-year></span> Happy Horse AI Guide.</p>
+      </div>
+    </footer>
+
+    <script src="../script.js" defer></script>
+  </body>
+</html>
