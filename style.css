@@ -971,6 +971,76 @@ td {
   background: rgba(255, 255, 252, 0.92);
 }
 
+.hero-access-notice {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 12px;
+  margin-top: 14px;
+  padding: 12px 14px;
+  border: 1px solid rgba(220, 179, 126, 0.34);
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(252, 244, 228, 0.9) 0%, rgba(255, 248, 238, 0.94) 100%);
+}
+
+.hero-access-dot {
+  width: 9px;
+  height: 9px;
+  flex: 0 0 auto;
+  margin-top: 8px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #d98a54 0%, #c96434 100%);
+  box-shadow: 0 0 0 5px rgba(217, 138, 84, 0.12);
+}
+
+.hero-access-body {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  flex: 1 1 auto;
+  flex-wrap: wrap;
+  text-align: left;
+}
+
+.hero-access-copy {
+  margin: 0;
+  flex: 1 1 560px;
+  color: #746458;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.hero-access-link {
+  flex: 0 0 auto;
+  color: #b6582d;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 2px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border: 1px solid rgba(182, 88, 45, 0.2);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 6px 14px rgba(201, 100, 52, 0.08);
+}
+
+.hero-access-link::after {
+  content: "↗";
+  font-size: 0.92rem;
+}
+
+.hero-access-link:hover,
+.hero-access-link:focus-visible {
+  color: #97421d;
+  border-color: rgba(151, 66, 29, 0.38);
+  background: rgba(255, 250, 245, 0.96);
+}
+
 .hero-panel-footer {
   display: flex;
   align-items: center;
