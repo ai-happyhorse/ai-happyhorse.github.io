@@ -16,22 +16,11 @@
       plausible.init = plausible.init || function(i){plausible.o = i || {}};
       plausible.init();
 
-      // Replace this one value with your final on-site Kling experience URL.
-      const KLING_TRY_URL = "https://www.aicovea.com/replace-with-your-kling-page/";
+      const KLING_TRY_URL = "https://www.aicovea.com/happyhorse-alternative";
 
       document.addEventListener("DOMContentLoaded", function () {
         document.querySelectorAll("[data-kling-cta]").forEach(function (link) {
-          const url = new URL(KLING_TRY_URL);
-          const campaign = link.getAttribute("data-kling-campaign");
-
-          url.searchParams.set("utm_source", "ai-happyhorse.github.io");
-          url.searchParams.set("utm_medium", "referral");
-
-          if (campaign) {
-            url.searchParams.set("utm_campaign", campaign);
-          }
-
-          link.href = url.toString();
+          link.href = KLING_TRY_URL;
         });
       });
     </script>
