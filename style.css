@@ -147,14 +147,16 @@ img {
 .main-nav {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 6px;
 }
 
 .main-nav a {
-  padding: 10px 14px;
+  padding: 8px 10px;
   border-radius: 999px;
   color: var(--muted);
-  font-size: 0.95rem;
+  font-size: 0.88rem;
+  line-height: 1.2;
+  white-space: nowrap;
 }
 
 .main-nav a:hover,
