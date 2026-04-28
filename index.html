@@ -24,6 +24,13 @@
       plausible.init = plausible.init || function(i){plausible.o = i || {}};
       plausible.init();
     </script>
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "wisjt58j0j");
+    </script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -157,106 +164,18 @@
               <p class="hero-lead">
                 HappyHorse AI and HappyHorse 1.0 are rising search terms for users looking for an AI video generator with text to video and image to video workflows, stronger prompt control, and better motion quality. This page covers what HappyHorse 1.0 is, official site notes, GitHub and open-source discussion, prompts, features, and a practical Seedance 2.0 comparison.
               </p>
+              <div class="home-primary-actions" aria-label="HappyHorse generator actions">
+                <a class="home-primary-button" href="https://www.aicovea.com/happyhorse-style-video-generator" target="_blank" rel="noopener noreferrer" onclick="if (window.plausible) plausible('HappyHorse Home Primary CTA Click');">Try HappyHorse Generator</a>
+              </div>
             </div>
 
             <aside class="hero-panel hero-panel-wide" aria-label="HappyHorse prompt exploration interface">
-              <style>
-                .home-hero-cta {
-                  position: relative;
-                  z-index: 1;
-                  display: flex;
-                  align-items: center;
-                  gap: 14px;
-                  margin: 0 0 14px;
-                  padding: 14px 16px;
-                  border: 1px solid #F3C8A7;
-                  border-radius: 16px;
-                  background: #FFF3E8;
-                  box-shadow: 0 8px 24px rgba(186, 92, 30, 0.10);
-                }
-
-                .home-hero-cta-content {
-                  display: flex;
-                  align-items: center;
-                  gap: 10px;
-                  flex: 1 1 auto;
-                  min-width: 0;
-                }
-
-                .home-hero-cta-badge {
-                  flex: 0 0 auto;
-                  padding: 4px 10px;
-                  border-radius: 999px;
-                  background: #FFE7C2;
-                  color: #8A3A14;
-                  font-size: 12px;
-                  font-weight: 700;
-                  line-height: 1;
-                  letter-spacing: 0;
-                }
-
-                .home-hero-cta-copy {
-                  margin: 0;
-                  color: #6A2E12;
-                  font-size: clamp(14px, 1.25vw, 15px);
-                  font-weight: 600;
-                  line-height: 1.4;
-                }
-
-                .home-hero-cta-button {
-                  flex: 0 0 auto;
-                  display: inline-flex;
-                  align-items: center;
-                  justify-content: center;
-                  padding: 10px 16px;
-                  border-radius: 999px;
-                  background: linear-gradient(135deg, #D96F2E 0%, #B84B1D 100%);
-                  color: #FFFDF8;
-                  font-weight: 700;
-                  font-size: 14px;
-                  line-height: 1;
-                  text-decoration: none;
-                  box-shadow: 0 8px 20px rgba(184, 75, 29, 0.25);
-                  transition: transform 160ms ease, background 160ms ease, box-shadow 160ms ease;
-                  white-space: nowrap;
-                }
-
-                .home-hero-cta-button:hover,
-                .home-hero-cta-button:focus-visible {
-                  background: linear-gradient(135deg, #E37A35 0%, #C45220 100%);
-                  color: #FFFDF8;
-                  transform: translateY(-1px);
-                  box-shadow: 0 10px 22px rgba(184, 75, 29, 0.30);
-                }
-
-                @media (max-width: 640px) {
-                  .home-hero-cta {
-                    align-items: stretch;
-                    flex-direction: column;
-                    gap: 12px;
-                    margin-bottom: 12px;
-                    padding: 14px;
-                  }
-
-                  .home-hero-cta-content {
-                    align-items: flex-start;
-                  }
-
-                  .home-hero-cta-button {
-                    width: 100%;
-                    min-height: 42px;
-                  }
-                }
-              </style>
-              <div class="home-hero-cta" aria-label="Generate a HappyHorse video">
-                <div class="home-hero-cta-content">
-                  <span class="home-hero-cta-badge">NEW</span>
-                  <p class="home-hero-cta-copy">Generate a HappyHorse video for free with ready-made prompts and higher-quality results.</p>
-                </div>
-                <a class="home-hero-cta-button" href="https://www.aicovea.com/happyhorse-style-video-generator" target="_blank" rel="noopener noreferrer" onclick="if (window.plausible) plausible('HappyHorse Home CTA Click');">Generate Free Video</a>
-              </div>
               <label class="sr-only" for="prompt-preview">Example HappyHorse prompt</label>
-              <textarea id="prompt-preview" class="prompt-box" placeholder="Describe your scene, motion, lighting, and camera. Use this page to explore HappyHorse 1.0 prompts, access intent, and comparison paths."></textarea>
+              <textarea id="prompt-preview" class="prompt-box" placeholder="Describe your scene, motion, lighting, camera, and style..."></textarea>
+              <div class="prompt-action-bar" aria-label="Generate this prompt">
+                <span>Ready to turn this prompt into a video?</span>
+                <a href="https://www.aicovea.com/happyhorse-style-video-generator" target="_blank" rel="noopener noreferrer" onclick="if (window.plausible) plausible('HappyHorse Prompt CTA Click');">Generate with HappyHorse</a>
+              </div>
               <div class="tool-grid tool-grid-six">
                 <label class="control" for="hero-model">
                   <span class="control-label">Model</span>
